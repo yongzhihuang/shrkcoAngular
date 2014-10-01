@@ -1,0 +1,35 @@
+<div class="wrap full-container" >
+  <section id="login-area">
+      <div class="login small-container">
+        <div class="login-screen">
+          <div class="login-icon">
+            <img src="assets/img/icons/svg/clipboard.svg" alt="Sign Up" />
+            <h4>{{identity.name}} <small>Sign Up</small></h4>
+          </div>
+
+          <div class="login-form">
+            <div class="form-group">
+              <input type="text" placeholder="Username" class="form-control login-field" ng-model="user.username" required autofocus>
+            </div>
+
+            <div class="form-group">
+              <input type="email" placeholder="Email" class="form-control login-field" ng-model="user.email" required>
+            </div>
+
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control login-field" ng-model="user.password" required>
+            </div>
+
+            <div class="form-group">
+              <input type="text" placeholder="Beta Key" class="form-control login-field" ng-model="user.betakey" required ng-enter="signup(user)">
+            </div>
+
+            <p ng-show="signupStatus" class="status-message">{{signupStatus}}</p>
+            <button class="btn btn-convert" type="submit" ng-click="signup(user)" ng-disabled="form1.$invalid">Sign Up</button>
+            <p class="small-graph">Already have an account? <a href="#login">Sign in</a></p>
+          </div>
+        </div>
+      </div>
+  </section>
+</div>
+
