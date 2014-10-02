@@ -12,9 +12,14 @@
  * The dependencies block here is also where component dependencies should be
  * specified, as shown below.
  */
-angular.module( 'shrkco.home', [
+angular.module( 'shrkco.main', [
   'ui.router',
-  'plusOne'
+  'placeholders',
+  'ui.bootstrap',
+  'loginService',
+  'sessionService',
+  'ngAnimate',
+  'shrkco.main.createGroup'
 ])
 
 /**
@@ -23,12 +28,12 @@ angular.module( 'shrkco.home', [
  * this way makes each module more "self-contained".
  */
 .config(function config( $stateProvider ) {
-  $stateProvider.state( 'home', {
+  $stateProvider.state( 'main', {
     url: '/',
     views: {
       "main": {
-        controller: 'HomeCtrl',
-        templateUrl: 'home/home.tpl.html'
+        controller: 'mainCtrl',
+        templateUrl: 'main/main.tpl.html'
       }
     },
     data:{ pageTitle: 'ShrkCo: Create and share link bundles with the world' }
@@ -38,7 +43,15 @@ angular.module( 'shrkco.home', [
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'HomeCtrl', function HomeController( $scope ) {
+.controller( 'mainCtrl', function mainController( $scope ) {
+  $scope.creationStarted = false;
+
+  $scope.startCreation = function() {
+    $scope.creationStarted = true;
+    $scope.showNavigator = true;
+    window.alert('hi');
+  };
+
 })
 
 ;

@@ -3,7 +3,7 @@ angular.module( 'shrkco', [
   'templates-common',
   'ngEnter',
   'ui.router',
-  'shrkco.home',
+  'shrkco.main',
   'shrkco.login',
   'shrkco.signup'
 ])
