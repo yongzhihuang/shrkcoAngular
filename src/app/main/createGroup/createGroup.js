@@ -7,10 +7,10 @@ angular.module( 'shrkco.main.createGroup', [
 .config(function config( $stateProvider ) {
 
   $stateProvider.state('main.createGroup', {
-    url: '/createGroup',
+    url: 'createGroup',
     controller: 'createGroupCtrl',
     templateUrl: 'main/createGroup/createGroup.tpl.html',
-    data:{ pageTitle: 'Step 1: Create a group' }  
+    data:{ pageTitle: 'Create a group - Shrkco' }  
   });
 
 })

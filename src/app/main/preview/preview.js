@@ -1,4 +1,4 @@
-angular.module( 'shrkco.main.createGroup', [
+angular.module( 'shrkco.main.preview', [
   'ui.router',
   'placeholders',
   'ui.bootstrap'
@@ -6,17 +6,17 @@ angular.module( 'shrkco.main.createGroup', [
 
 .config(function config( $stateProvider ) {
 
-  $stateProvider.state('main.createGroup', {
-    url: '/createGroup',
-    controller: 'createGroupCtrl',
-    templateUrl: 'main/createGroup/createGroup.tpl.html',
-    data:{ pageTitle: 'Step 1: createGroup' }  
+  $stateProvider.state('main.preview', {
+    url: '/preview',
+    controller: 'previewCtrl',
+    templateUrl: 'main/preview/preview.tpl.html',
+    data:{ pageTitle: 'Step 1: preview' }  
   });
 
 })
 
-.controller( 'createGroupCtrl', function createGroupCtrl( $scope) {
-	$scope.sectionDescription = 'Your createGroup and profile settings';
+.controller( 'previewCtrl', function previewCtrl( $scope) {
+	$scope.sectionDescription = 'Your preview and profile settings';
 })
 
 ;

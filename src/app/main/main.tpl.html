@@ -38,13 +38,14 @@
 
 
   <section class="bundle-creation">
-    <div class="btn-group step-navigator" ng-show="showNavigator">
-      <button type="button" class="btn btn-default enabled">Create group</button>
-      <button type="button" class="btn btn-default">Links</button>
-      <button type="button" class="btn btn-default">Options</button>
-      <button type="button" class="btn btn-default">Preview</button>
-    </div>
-
+    <section class="step-navigator">
+      <div class="btn-group" ng-show="showNavigator">
+        <a class="btn btn-inverse active" ui-sref=".createGroup"><span class="fui-tag"></span> Create Bundle</a>
+        <a class="btn btn-inverse" ui-sref=".enterLink"><span class="fui-link"></span> Enter Links</a>
+        <a class="btn btn-inverse" ui-sref=".options"><span class="fui-new"></span> Set Options</a>
+        <a class="btn btn-inverse" ui-sref=".preview"><span class="fui-eye"></span> Preview!</a>
+      </div>
+    </section>
     <div ui-view></div>
    <!--  <div class="creation-create-group step" ng-show="create-group">
         <h3 class="group-title">Group</h3>

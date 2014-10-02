@@ -19,7 +19,10 @@ angular.module( 'shrkco.main', [
   'loginService',
   'sessionService',
   'ngAnimate',
-  'shrkco.main.createGroup'
+  'shrkco.main.createGroup',
+  'shrkco.main.enterLink',
+  'shrkco.main.options',
+  'shrkco.main.preview'
 ])
 
 /**
@@ -49,7 +52,6 @@ angular.module( 'shrkco.main', [
   $scope.startCreation = function() {
     $scope.creationStarted = true;
     $scope.showNavigator = true;
-    window.alert('hi');
   };
 
 })
