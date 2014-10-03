@@ -56,17 +56,13 @@ angular.module( 'shrkco.main', [
     $scope.showNavigator = true;
   };
 
-  $scope.hideTopNav = false;
-
-  $document.on('scroll', function() {
-    console.log('scroll', $document.scrollTop());
-
-      if ($document.scrollTop() === 200) {
-        console.log('is top');
-        $scope.hideTopNav = true;
-        console.log($scope.hideTopNav);
-      }
-  });
+  // $document.on('scroll', function() {
+  //     if ($document.scrollTop() === 200) {
+  //       console.log('is top');
+  //       $scope.hideTopNav = true;
+  //       console.log($scope.hideTopNav);
+  //     }
+  // });
 })
 ;
 

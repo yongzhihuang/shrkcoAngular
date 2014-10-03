@@ -36,7 +36,7 @@
   <section class="bundle-creation" id="creation-wrap" ng-show="showCreationScreen">
 
 
-  <nav id="step-menu" ng-hide="hideTopNav">
+<!--   <nav id="step-menu" ng-hide="hideTopNav">
     <ul>
       <li><a href="#step-create-group" du-smooth-scroll du-scrollspy>Create Group</a></li>
       <li><a href="#step-enter-links" du-smooth-scroll du-scrollspy>Enter Links</a></li>
@@ -45,34 +45,60 @@
       <li><a href="#step-save" du-smooth-scroll du-scrollspy>Save</a></li>
     </ul>
   </nav>
-
-    <div id="step-create-group" class="step">
-      <div class="break"></div>
-      <h3>Create a group</h3>
-      <p class="step-description">Create a group for this link, what's category does this link belong to?</p>
-      <div class="form-group">
-        <input type="text" value="" placeholder="movies, funny videos, interesting articles, todos, etc.." class="form-control">
-      </div>
-      <div class="next-step">
-        <a href="#fakelink" class="btn btn-lg btn-inverse"><i class="fui-arrow-right"></i> Next: Enter links</a>
-      </div>
-      <img src="http://lorempixel.com/1000/400/" alt="" />
-    </div>
-
-    <div id="step-enter-links" class="step">
+ -->
+    <section id="step-create-group">
+      <div class="step">
         <div class="break"></div>
-        <h3>Add Links to the group</h3>
-        <p class="step-description">Enter url into the box below. You can enter as many as you like. The title will be automatically populated, but you may override it if you wish</p>
+        <h3>Create a group</h3>
+        <p class="step-description">Create a group for your links, what's category does this link belong to? Note: you are allowed multiple groups per bundle.</p>
         <div class="form-group">
-          <input type="text" value="" placeholder="movies, funny videos, interesting articles, todos, etc.." class="form-control">
-          <a class="btn btn-success btn-addmore"><i class="fui-plus"></i>Add More</a>
+          <input type="text" value="" placeholder="Movies, funny videos, interesting articles, todos, etc.." class="form-control">
         </div>
         <div class="next-step">
-          <a href="#fakelink" class="btn btn-lg btn-inverse"><i class="fui-arrow-right"></i> Next: Set Options</a>
+          <a href="#step-enter-links" du-smooth-scroll du-scrollspy class="btn btn-lg btn-info btn-step" ng-click="isEnterLink=true"><i class="fui-arrow-right"></i> Done, What's next?</a>
         </div>
-    </div>
+      </div>
+    </section>
 
-    <div id="step-set-options" class="step">
+    <section id="step-enter-links">
+      <div class="step" ng-show="isEnterLink">
+        <div class="break"></div>
+
+        <div class="step-info col-xs-3">
+          <h3>Add Links to the group</h3>
+          <p class="step-description">Enter url into the box below. You can enter as many as you like. The title will be automatically populated, but you may override it if you wish</p>
+
+          <div class="next-step">
+            <a href="#step-set-options" du-smooth-scroll du-scrollspy class="btn btn-lg btn-info btn-step" ng-click="isSetOptions=true"><i class="fui-arrow-right"></i> Next Step</a>
+          </div>
+        </div>
+
+        <div class="step-data col-xs-9">
+          <div class="form-group add-link-group">
+            <input type="text" value="" placeholder="movies, funny videos, interesting articles, todos, etc.." class="form-control">
+            <a class="btn btn-success btn-addmore"><i class="fui-plus"></i>Add More</a>
+
+            <div class="break"></div>
+            <div class="preview-label"><i class="fui-search"></i> Preview:</div>
+            <div class="preview-link">
+              <p>Name: The best site in the world</p>
+              <p>Url: http://www.test.com</p>
+              <img src="http://lorempixel.com/300/250/" alt="" />
+            </div>
+          </div>
+        </div>
+
+<!--           <div class="form-group">
+            <input type="text" value="" placeholder="movies, funny videos, interesting articles, todos, etc.." class="form-control">
+            <a class="btn btn-success btn-addmore"><i class="fui-plus"></i>Add More</a>
+          </div>
+          <div class="next-step">
+            <a href="#step-set-options" du-smooth-scroll du-scrollspy class="btn btn-lg btn-info btn-step" ng-click="isSetOptions=true"><i class="fui-arrow-right"></i> Next: Set Options</a>
+          </div> -->
+      </div>
+    </section>
+
+    <div id="step-set-options" class="step" ng-show="isSetOptions">
       <div class="break"></div>
       <h3>Options</h3>
       <p class="step-description">Create a group for this link, what's category does this link belong to?</p>
@@ -82,30 +108,36 @@
         <a class="btn btn-success btn-addmore"><i class="fui-plus"></i>Add More</a>
       </div>
       <div class="next-step">
-        <a href="#fakelink" class="btn btn-lg btn-inverse"><i class="fui-arrow-right"></i> Next: Set Options</a>
+        <a href="#step-preview" du-smooth-scroll du-scrollspy class="btn btn-lg btn-info btn-step" ng-click="isStepPreview=true"><i class="fui-arrow-right"></i> Show me the Preview!</a>
       </div>
     </div>
 
-
-    <div id="step-preview" class="creation-preview step">
-      <div class="break"></div>
-      <h3>Preview</h3>
-      <p class="step-description">Enter url into the box below. You can enter as many as you like. The title will be automatically populated, but you may override it if you wish</p>
-      <div class="form-group">
-        <input type="text" value="" placeholder="movies, funny videos, interesting articles, todos, etc.." class="form-control">
-        <a class="btn btn-success btn-addmore"><i class="fui-plus"></i>Add More</a>
+    <section id="step-preview">
+      <div class="creation-preview step" ng-show="isStepPreview">
+        <div class="break"></div>
+        <h3>Preview</h3>
+        <p class="step-description">Enter url into the box below. You can enter as many as you like. The title will be automatically populated, but you may override it if you wish</p>
+        <div class="form-group">
+          <input type="text" value="" placeholder="movies, funny videos, interesting articles, todos, etc.." class="form-control">
+          <a class="btn btn-success btn-addmore"><i class="fui-plus"></i>Add More</a>
+        </div>
+        <div class="next-step">
+          <a href="#step-save" du-smooth-scroll du-scrollspy class="btn btn-lg btn-info btn-step"><i class="fui-arrow-right"></i> Next: Save</a>
+        </div>
       </div>
-      <div class="next-step">
-        <a href="#fakelink" class="btn btn-lg btn-inverse"><i class="fui-arrow-right"></i> Next: Set Options</a>
+    </section>
+
+    <section id="step-save">
+      <div ng-show="isStepSave">
+        <h2>Section 3</h2>
+        <p>Shank fatback pastrami short loin, turkey jowl kielbasa ribeye chicken jerky drumstick flank ham. Swine shankle pork belly kielbasa shoulder flank jowl, sirloin doner. Kevin tri-tip bresaola leberkas. Swine ball tip cow strip steak. Ham filet mignon pork chop, pork fatback andouille pork loin shoulder jowl swine strip steak turducken prosciutto rump.</p>
+
+        <img src="http://lorempixel.com/1000/400/" alt="" />
+
+        <p>Tongue tri-tip pastrami, shoulder rump pork belly ground round. Ham hock chuck leberkas doner, strip steak corned beef tri-tip capicola. Rump turkey ham sausage shankle. Flank shankle pork chop ham hock. Shankle venison kielbasa, pancetta swine beef ball tip t-bone bacon hamburger ground round ribeye flank. Turducken bacon bresaola, chicken kevin boudin ball tip strip steak filet mignon pork turkey shank ground round. Kielbasa fatback prosciutto pork chop, jerky ground round leberkas boudin ball tip beef shankle shoulder swine brisket.</p>
       </div>
+    </section>
 
-       <section id="section-3">
-    <h2>Section 3</h2>
-    <p>Shank fatback pastrami short loin, turkey jowl kielbasa ribeye chicken jerky drumstick flank ham. Swine shankle pork belly kielbasa shoulder flank jowl, sirloin doner. Kevin tri-tip bresaola leberkas. Swine ball tip cow strip steak. Ham filet mignon pork chop, pork fatback andouille pork loin shoulder jowl swine strip steak turducken prosciutto rump.</p>
 
-    <img src="http://lorempixel.com/1000/400/" alt="" />
-
-    <p>Tongue tri-tip pastrami, shoulder rump pork belly ground round. Ham hock chuck leberkas doner, strip steak corned beef tri-tip capicola. Rump turkey ham sausage shankle. Flank shankle pork chop ham hock. Shankle venison kielbasa, pancetta swine beef ball tip t-bone bacon hamburger ground round ribeye flank. Turducken bacon bresaola, chicken kevin boudin ball tip strip steak filet mignon pork turkey shank ground round. Kielbasa fatback prosciutto pork chop, jerky ground round leberkas boudin ball tip beef shankle shoulder swine brisket.</p>
-  </section>
   </section>
 </div> <!-- /container -->
