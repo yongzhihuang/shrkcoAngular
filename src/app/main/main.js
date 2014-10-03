@@ -19,12 +19,7 @@ angular.module( 'shrkco.main', [
   'loginService',
   'sessionService',
   'ngAnimate',
-  'duScroll',
-  'shrkco.main.create',
-  'shrkco.main.createGroup',
-  'shrkco.main.enterLink',
-  'shrkco.main.options',
-  'shrkco.main.preview'
+  'duScroll'
 ])
 
 /**
@@ -49,20 +44,28 @@ angular.module( 'shrkco.main', [
  * And of course we define a controller for our route.
  */
 .controller( 'mainCtrl', function mainController( $scope, $document ) {
-  $scope.creationStarted = false;
 
-  $scope.startCreation = function() {
-    $scope.creationStarted = true;
-    $scope.showNavigator = true;
+  //Category
+  //Set a variable to handle all available groups.
+  $scope.groups = [];
+  
+  //Add Group
+  $scope.addGroup = function (groupName) {
+    $scope.groups.push(groupName);
+    $scope.groupName = '';
   };
 
-  // $document.on('scroll', function() {
-  //     if ($document.scrollTop() === 200) {
-  //       console.log('is top');
-  //       $scope.hideTopNav = true;
-  //       console.log($scope.hideTopNav);
-  //     }
-  // });
+  //Remove Group
+  $scope.removeGroup = function(index){
+    $scope.groups.splice(index, 1);
+  };
+
+  //Options
+  //Variables for various options
+  $scope.hasPasswordProtection = false;
+  $scope.hasExpirationDate = false;
+  $scope.openToContribution = false;
+
 })
 ;
 

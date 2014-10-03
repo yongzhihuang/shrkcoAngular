@@ -2,7 +2,6 @@
   <div class="site-header">
     <div class="site-header-logo">
       <a class="logo" href="/" title="Home">
-        <!-- <img alt="IFTTT" class="ifttt-logo_image" src="/assets/r2012/ifttt_logo_83-2fa98a5d840c5fa967eb43431c900da7.svg"> -->
         Shrk.co
       </a>
     </div>
@@ -26,46 +25,53 @@
   </div>
 </header>
 
+<!-- ------------------- JUMBOTRON ---------------------- -->
 <div class="jumbotron title-container">
   <h1>Create and share link bundles with the world</h1>
-  <button class="btn btn-lg btn-info large-text btn-create-bundle" ng-click="showCreationScreen=true" ng-hide="creationStarted" href="#step-create-group" du-smooth-scroll du-scrollspy><i class="fui-plus"></i> Create a Bundle</button>
+  <button class="btn btn-lg btn-info large-text btn-create-bundle" ng-click="showCreationScreen=true" href="#step-create-group" du-smooth-scroll du-scrollspy><i class="fui-plus"></i> Create a Bundle</button>
 
 </div>
 
 <div class="container main-wrap">
   <section class="bundle-creation" id="creation-wrap" ng-show="showCreationScreen">
 
-
-<!--   <nav id="step-menu" ng-hide="hideTopNav">
-    <ul>
-      <li><a href="#step-create-group" du-smooth-scroll du-scrollspy>Create Group</a></li>
-      <li><a href="#step-enter-links" du-smooth-scroll du-scrollspy>Enter Links</a></li>
-      <li><a href="#step-set-options" du-smooth-scroll du-scrollspy>Set Options</a></li>
-      <li><a href="#step-preview" du-smooth-scroll du-scrollspy>Preview</a></li>
-      <li><a href="#step-save" du-smooth-scroll du-scrollspy>Save</a></li>
-    </ul>
-  </nav>
- -->
+    <!-- ------------------- CREATE GROUP ---------------------- -->
     <section id="step-create-group">
       <div class="step">
         <div class="break"></div>
-        <h3>Create a group</h3>
-        <p class="step-description">Create a group for your links, what's category does this link belong to? Note: you are allowed multiple groups per bundle.</p>
-        <div class="form-group">
-          <input type="text" value="" placeholder="Movies, funny videos, interesting articles, todos, etc.." class="form-control">
+        <h3>Create a group </h3>
+        <p class="step-description">What's categories will your links belong to? Add as many groups as you want for this bundle. Click on "Add Group" button after you enter group names.</p>
+
+        <div class="break"></div>
+
+        <div class="preview-label"><i class="fui-folder"></i> Groups:</div>
+        <div class="preview-link">
+          <p ng-show="groups.length===0">There's nothing here yet!</p>
+          <ul class="category-entered-list">
+            <li class="btn btn-primary" ng-repeat="group in groups">{{group}} <i class="fui-cross" ng-click="removeGroup($index)"></i></li>
+          </ul>
         </div>
+
+        <div class="form-group">
+          <input type="text" value="" ng-model="groupName" placeholder="Movies, funny videos, interesting articles, todos, etc.." class="form-control" ng-enter="addGroup(groupName)">
+        </div>
+
         <div class="next-step">
-          <a href="#step-enter-links" du-smooth-scroll du-scrollspy class="btn btn-lg btn-info btn-step" ng-click="isEnterLink=true"><i class="fui-arrow-right"></i> Done, What's next?</a>
+          <a class="btn btn-lg btn-success btn-step" ng-click="addGroup(groupName)"><i class="fui-plus-circle"></i> Add Group</a>
+          <a href="#step-enter-links" du-smooth-scroll du-scrollspy class="btn btn-lg btn-info btn-step" ng-click="isEnterLink=true">Done, What's next?</a>
         </div>
       </div>
     </section>
 
+    <!-- ------------------- ENTER LINKS ---------------------- -->
     <section id="step-enter-links">
       <div class="step" ng-show="isEnterLink">
         <div class="break"></div>
+        <h3>Add Links to the group<a href="#step-create-group" du-smooth-scroll du-scrollspy  class="btn btn-default btn-back-top" ng-click="goBackTop()"><i class="fui-triangle-up"></i> Back</a></h3>
+
+        <div class="break"></div>
 
         <div class="step-info col-xs-3">
-          <h3>Add Links to the group</h3>
           <p class="step-description">Enter url into the box below. You can enter as many as you like. The title will be automatically populated, but you may override it if you wish</p>
 
           <div class="next-step">
@@ -75,7 +81,12 @@
 
         <div class="step-data col-xs-9">
           <div class="form-group add-link-group">
-            <input type="text" value="" placeholder="movies, funny videos, interesting articles, todos, etc.." class="form-control">
+            <input type="text" value="" placeholder="http://www.myfavoritewebsite.com" class="form-control">
+          <select class="form-control">
+            <option>Category:</option>
+            <option ng-repeat="group in groups">{{group}}</option>
+          </select>
+
             <a class="btn btn-success btn-addmore"><i class="fui-plus"></i>Add More</a>
 
             <div class="break"></div>
@@ -87,35 +98,57 @@
             </div>
           </div>
         </div>
-
-<!--           <div class="form-group">
-            <input type="text" value="" placeholder="movies, funny videos, interesting articles, todos, etc.." class="form-control">
-            <a class="btn btn-success btn-addmore"><i class="fui-plus"></i>Add More</a>
-          </div>
-          <div class="next-step">
-            <a href="#step-set-options" du-smooth-scroll du-scrollspy class="btn btn-lg btn-info btn-step" ng-click="isSetOptions=true"><i class="fui-arrow-right"></i> Next: Set Options</a>
-          </div> -->
       </div>
     </section>
 
+    <!-- ------------------- SET OPTIONS ---------------------- -->
     <div id="step-set-options" class="step" ng-show="isSetOptions">
       <div class="break"></div>
-      <h3>Options</h3>
-      <p class="step-description">Create a group for this link, what's category does this link belong to?</p>
-      <p class="step-description">Enter url into the box below. You can enter as many as you like. The title will be automatically populated, but you may override it if you wish</p>
-      <div class="form-group">
-        <input type="text" value="" placeholder="movies, funny videos, interesting articles, todos, etc.." class="form-control">
-        <a class="btn btn-success btn-addmore"><i class="fui-plus"></i>Add More</a>
-      </div>
-      <div class="next-step">
-        <a href="#step-preview" du-smooth-scroll du-scrollspy class="btn btn-lg btn-info btn-step" ng-click="isStepPreview=true"><i class="fui-arrow-right"></i> Show me the Preview!</a>
-      </div>
-    </div>
+      <h3>Options<a href="#step-enter-links" du-smooth-scroll du-scrollspy  class="btn btn-default btn-back-top" ng-click="goBackTop()"><i class="fui-triangle-up"></i> Back</a></h3>
+      <p class="step-description">Set visibility settings such as bundle name, password protection, expiration, and whether others can contribute to it. Leave fields blank to turn it off</p>
+      
+      <div class="preview-link">
+        <h4>Bundle Name:</h4>
+          <p class="options-description">Name your bundle, try to make it meaningful.</p>
+          <input type="text" value="" placeholder="Favorite movies, amazing arts, nice articles" class="form-control">
 
+        <h4>Password Protected</h4>
+          <p class="options-description">This bundle will be private and requires a password to view.</p>
+          <label class="checkbox" for="chkPasswordProtected">
+            <input type="checkbox" value="" id="chkPasswordProtected" data-toggle="checkbox" class="custom-checkbox" ng-model="hasPasswordProtection"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
+            Password Protect it!
+          </label>
+          <input type="text" value="" placeholder="Password..." class="form-control" ng-show="hasPasswordProtection===true">
+
+
+        <h4>Set Expiration Date</h4>
+          <p class="options-description">This bundle will expire at the date specified below:</p>
+          <label class="checkbox" for="chkExpirationDate">
+            <input type="checkbox" value="" id="chkExpirationDate" data-toggle="checkbox" class="custom-checkbox" ng-model="hasExpirationDate"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
+            Set Password Protection
+          </label>
+          <input type="text" value="" placeholder="mm/dd/year" class="form-control" ng-show="hasExpirationDate===true">
+
+
+        <h4>Open to Contribution</h4>
+          <p class="options-description">This bundle will allow anyone to edit it. (All edits will be submitted to the original creator for moderation</p>
+          <label class="checkbox" for="chkOpenContribution">
+            <input type="checkbox" value="" id="chkOpenContribution" data-toggle="checkbox" class="custom-checkbox" ng-model="openToContribution"><span class="icons"><span class="icon-unchecked"></span><span class="icon-checked"></span></span>
+            Make it Open to Contribution
+          </label>
+        </div>
+
+        <div class="next-step">
+          <a href="#step-preview" du-smooth-scroll du-scrollspy class="btn btn-lg btn-info btn-step" ng-click="isStepPreview=true"><i class="fui-search"></i> Show me the Preview!</a>
+        </div>
+      </div>
+
+
+    <!-- ------------------- PREVIEW ---------------------- -->
     <section id="step-preview">
       <div class="creation-preview step" ng-show="isStepPreview">
         <div class="break"></div>
-        <h3>Preview</h3>
+        <h3>Preview<a href="#step-set-options" du-smooth-scroll du-scrollspy  class="btn btn-default btn-back-top" ng-click="goBackTop()"><i class="fui-triangle-up"></i> Back</a></h3>
         <p class="step-description">Enter url into the box below. You can enter as many as you like. The title will be automatically populated, but you may override it if you wish</p>
         <div class="form-group">
           <input type="text" value="" placeholder="movies, funny videos, interesting articles, todos, etc.." class="form-control">
@@ -127,6 +160,7 @@
       </div>
     </section>
 
+    <!-- ------------------- SAVE ---------------------- -->
     <section id="step-save">
       <div ng-show="isStepSave">
         <h2>Section 3</h2>
