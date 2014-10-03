@@ -16,7 +16,7 @@ angular.module( 'shrkco', [
 
 })
 
-.controller( 'AppCtrl', function AppCtrl ( $scope, $location, loginService, sessionService) {
+.controller( 'AppCtrl', function AppCtrl ( $scope, $location, loginService, sessionService, $document) {
   $scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
 
     //When transitioning to a page that has title

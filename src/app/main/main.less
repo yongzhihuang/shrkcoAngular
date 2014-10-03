@@ -74,6 +74,10 @@
 	margin-left: auto;
 	margin-right: auto;
 	padding: 14px 10px;
+
+	.bundle-creation {
+		min-height: 300px;
+	}
 }
 
 .btn-create-bundle {
@@ -104,7 +108,8 @@
 
 .step {
 	margin-top: 12px;
-	
+	padding: 50px 0 30px 0;
+	min-height: 500px;
 	.step-description {
 		color: #ccc;
 		margin-bottom: 20px;
@@ -129,5 +134,38 @@
 
 .step-navigator {
 	text-align: center;
+}
+
+#step-menu {
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      background: rgba(255, 255, 255, 0.8);
+    
+      	li, ul {
+	      list-style: none;
+	      margin: 0;
+	      padding: 0;
+	      text-align: center
+    	}
+
+    li, a {
+      display: inline-block;
+    }
+
+    a {
+      padding: 20px;
+      color: #333;
+      text-decoration: none;
+
+		&.active {
+	      background: #00AC7F!important;
+	      color: #fff!important;
+	    }
+    }
+
 }
 

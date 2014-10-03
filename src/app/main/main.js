@@ -19,6 +19,8 @@ angular.module( 'shrkco.main', [
   'loginService',
   'sessionService',
   'ngAnimate',
+  'duScroll',
+  'shrkco.main.create',
   'shrkco.main.createGroup',
   'shrkco.main.enterLink',
   'shrkco.main.options',
@@ -46,7 +48,7 @@ angular.module( 'shrkco.main', [
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'mainCtrl', function mainController( $scope ) {
+.controller( 'mainCtrl', function mainController( $scope, $document ) {
   $scope.creationStarted = false;
 
   $scope.startCreation = function() {
@@ -54,7 +56,17 @@ angular.module( 'shrkco.main', [
     $scope.showNavigator = true;
   };
 
-})
+  $scope.hideTopNav = false;
 
+  $document.on('scroll', function() {
+    console.log('scroll', $document.scrollTop());
+
+      if ($document.scrollTop() === 200) {
+        console.log('is top');
+        $scope.hideTopNav = true;
+        console.log($scope.hideTopNav);
+      }
+  });
+})
 ;
 
