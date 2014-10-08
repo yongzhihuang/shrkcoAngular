@@ -81,20 +81,19 @@
 
         <div class="step-data col-xs-9">
           <div class="form-group add-link-group">
-            <input type="text" value="" placeholder="http://www.myfavoritewebsite.com" class="form-control">
-          <select class="form-control">
-            <option>Category:</option>
-            <option ng-repeat="group in groups">{{group}}</option>
-          </select>
+            <select class="form-control dropdown-form">
+              <option>Category:</option>
+              <option ng-repeat="group in groups">{{group}}</option>
+            </select>
 
-            <a class="btn btn-success btn-addmore"><i class="fui-plus"></i>Add More</a>
+            <input type="text" value="" ng-model="linkUrl" placeholder="http://www.myfavoritewebsite.com" class="form-control">
+
+            <a class="btn btn-success btn-addmore" ng-click="addLinkToCategory(linkUrl)"><i class="fui-plus"></i>Add</a>
 
             <div class="break"></div>
-            <div class="preview-label"><i class="fui-search"></i> Preview:</div>
+            <div class="preview-label"><i class="fui-search"></i> Links in this category:</div>
             <div class="preview-link">
-              <p>Name: The best site in the world</p>
-              <p>Url: http://www.test.com</p>
-              <img src="http://lorempixel.com/300/250/" alt="" />
+              
             </div>
           </div>
         </div>

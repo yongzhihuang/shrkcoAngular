@@ -56,8 +56,13 @@ angular.module( 'shrkco.main', [
   };
 
   //Remove Group
-  $scope.removeGroup = function(index){
+  $scope.removeGroup = function(index) {
     $scope.groups.splice(index, 1);
+  };
+
+  //Add Link to Group
+  $scope.addLinkToCategory = function(linkUrl) {
+    console.log(linkUrl);
   };
 
   //Options

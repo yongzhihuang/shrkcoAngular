@@ -10,3 +10,17 @@ $ npm install
 $ bower install
 $ grunt watch
 ```
+
+
+## Development Workflow
+
+Starts a server while watching files
+```
+grunt watch
+grunt server
+```
+
+Build for production
+```
+grunt
+```
